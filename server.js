@@ -15,7 +15,7 @@
 
 
 
-onst express = require("express");
+const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const dataService = require("./modules/data-service.js");
@@ -31,7 +31,7 @@ app.use(bodyParser.json());
 const HTTP_PORT = process.env.PORT || 8080;
 
 app.get("/", (req, res)=>{
-    res.send("Hello");
+    res.send("Hello Professor");
 });
 
 // ************* API Routes
