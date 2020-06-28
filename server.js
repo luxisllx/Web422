@@ -41,7 +41,7 @@ app.get("/", (req, res)=>{
 app.post("/api/sales", (req,res)=>{
     myData.addNewSale(req.body)
     .then(sale=>res.json(sale))
-    .catch(err=>res.json({message: err}));
+    .catch(err=>res.json(err));
 });
 
 
@@ -49,7 +49,7 @@ app.post("/api/sales", (req,res)=>{
 app.get("/api/sales", (req,res)=>{
     myData.getAllSales(req.query.page,req.query.perPage)
     .then(sale=>res.json(sale))
-    .catch(err=>res.json({message: err}));
+    .catch(err=>res.json(err));
 });
 
 
@@ -57,7 +57,7 @@ app.get("/api/sales", (req,res)=>{
 app.get("/api/sales/:id", (req,res)=>{
     myData.getSaleById(req.params.id)
     .then(sale=>res.json(sale))
-    .catch(err=>res.json({message: err}));
+    .catch(err=>res.json(err));
 });
 
 
@@ -66,14 +66,14 @@ app.get("/api/sales/:id", (req,res)=>{
 app.put("/api/sales/:id", (req,res)=>{
     myData.updateSaleById(req.body,req.params.id)
     .then(message=>res.json(message))
-    .catch(err=>res.json({err}));
+    .catch(err=>res.json(err));
 });
 
 // DELETE /api/sales (NOTE: This route must accept a numeric route parameter, ie: /api/sales/5bd761dcae323e45a93ccfe8)
 app.delete("/api/sales/:id", (req,res)=>{
     myData.deleteSaleById(req.params.id)
     .then(message=>res.json(message))
-    .catch(err=>res.json({err}));
+    .catch(err=>res.json(err));
 });
 
 // ************* Initialize the Service & Start the Server

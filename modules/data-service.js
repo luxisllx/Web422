@@ -30,7 +30,7 @@ module.exports = function(connectionString){
                     if(err) {
                         reject(err);
                     } else {
-                        resolve(`new sale: ${newSale._id} successfully added`);
+                        resolve({"message": "new sale: "+newSale._id+" successfully added"});
                     }
                 });
             });
@@ -46,7 +46,7 @@ module.exports = function(connectionString){
                             reject(err);
                         });
                 }else{
-                    reject('page and perPage query parameters must be present');
+                    reject({"error": "page and perPage query parameters must be present"});
                 }
             });
             
@@ -67,7 +67,7 @@ module.exports = function(connectionString){
                 Sale.updateOne({_id: id}, {
                     $set: data
                 }).exec().then(()=>{
-                    resolve(`sale ${id} successfully updated`)
+                    resolve({"message": "sale "+id+" successfully updated"})
                 }).catch(err=>{
                     reject(err);
                 });
@@ -80,7 +80,7 @@ module.exports = function(connectionString){
         deleteSaleById: function(id){
             return new Promise((resolve,reject)=>{
                 Sale.deleteOne({_id: id}).exec().then(()=>{
-                    resolve(`sale ${id} successfully deleted`)
+                    resolve({"message": "sale "+id+" successfully deleted"})
                 }).catch(err=>{
                     reject(err);
                 });
